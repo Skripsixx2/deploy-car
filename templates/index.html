@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <title>Aplikasi Prediksi Evaluasi Mobil</title>
+    </head>
+    <body
+        class="
+            flex flex-col
+            items-center
+            justify-center
+            p-8
+            min-h-screen
+            bg-gradient-to-r
+            from-gray-900
+            via-gray-700
+            to-gray-800
+            text-gray-200
+            md:flex-row
+            font-mono
+        "
+    >
+        <main class="bg-gray-800 shadow-lg p-12 rounded-lg w-full max-w-lg border border-gray-600">
+            <h1 class="text-4xl font-bold mb-8 text-center text-gray-100">
+                Prediksi Evaluasi Mobil
+            </h1>
+
+            <form
+                action="{{ url_for('predict') }}"
+                method="post"
+                class="flex flex-col space-y-6"
+            >
+                <div>
+                    <label for="buying" class="block text-lg font-medium mb-2">Buying</label>
+                    <select name="buying" required class="w-full p-4 bg-gray-700 rounded-md border border-gray-600 text-gray-100">
+                        <option value="vhigh">Very High</option>
+                        <option value="high">High</option>
+                        <option value="med">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="maint" class="block text-lg font-medium mb-2">Maintenance</label>
+                    <select name="maint" required class="w-full p-4 bg-gray-700 rounded-md border border-gray-600 text-gray-100">
+                        <option value="vhigh">Very High</option>
+                        <option value="high">High</option>
+                        <option value="med">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="doors" class="block text-lg font-medium mb-2">Doors</label>
+                    <select name="doors" required class="w-full p-4 bg-gray-700 rounded-md border border-gray-600 text-gray-100">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5more">5 or more</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="persons" class="block text-lg font-medium mb-2">Persons</label>
+                    <select name="persons" required class="w-full p-4 bg-gray-700 rounded-md border border-gray-600 text-gray-100">
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="more">More</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="lug_boot" class="block text-lg font-medium mb-2">Luggage Boot</label>
+                    <select name="lug_boot" required class="w-full p-4 bg-gray-700 rounded-md border border-gray-600 text-gray-100">
+                        <option value="small">Small</option>
+                        <option value="med">Medium</option>
+                        <option value="big">Big</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="safety" class="block text-lg font-medium mb-2">Safety</label>
+                    <select name="safety" required class="w-full p-4 bg-gray-700 rounded-md border border-gray-600 text-gray-100">
+                        <option value="low">Low</option>
+                        <option value="med">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold rounded-md shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">
+                    PREDIKSI SEKARANG
+                </button>
+            </form>
+        </main>
+
+        <section class="mt-8 md:mt-0 md:ml-8 w-full max-w-lg">
+            <div class="bg-gray-800 shadow-lg p-12 rounded-lg border border-gray-600">
+                <h1 class="text-2xl font-medium mb-6 text-center text-gray-100">
+                    Evaluasi Mobil Masuk ke Kelas:
+                </h1>
+                <h2 class="text-5xl font-bold text-center text-purple-500">
+                    Class {{ classPrediction }}
+                </h2>
+            </div>
+        </section>
+    </body>
+</html>
